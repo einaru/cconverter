@@ -1,0 +1,4 @@
+README Currency Converter
+-------------------------
+Currency Converter is a simple Gtk application for converting 
+currencies. It's written in Python and Gtk using PyGtk.
