@@ -1,4 +1,7 @@
 This is the changelog for Ebethron Currency Converter
+2011-03-05 Einar Uvsløkk <einar.uvslokk@linux.com>
+	Commited project to github
+	Restructuring the repo
 
 2011-03-04 Einar Uvsløkk <einar.uvslokk@linux.com>
 	* version:
@@ -15,7 +18,3 @@ This is the changelog for Ebethron Currency Converter
 		* console:
 		Also possible to interact with the program only from a console
 		Features:
-			* gtk:
-			Using glade to provide a gtk interface
-			* console:
-			Also possible to interact with the program only from a console.

@@ -1,0 +1,13 @@
+# Div
+*~
+# Eclipse spesifics
+*.project
+*.pydevproject
+*.settings
+
+# Version control spesifics
+*.svn
+
+# Python spesifics
+*.pyc
+
