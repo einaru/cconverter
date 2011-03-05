@@ -21,14 +21,15 @@
 import urllib
 
 """
-API location: http://exchangerate-api.com/supported-currencies
-
 The required Api Key:
 """
 API_KEY="bfzYQ-YE2vb-dckeY"
+API_URL="http://www.exchangerate-api.com"
 
 """
 The following currency codes are supported by this API:
+
+http://exchangerate-api.com/supported-currencies
 """
 currencies = {
     "Australian Dollar" : "AUD",    #  0
@@ -81,15 +82,15 @@ def convert(from_c, to_c, amount):
     @param from_c: The currency to convert from
     @param to_c: The currency to covnert to
     @param amount: The amount to convert
-    @return: The exchangerate
+    @return: The exchangerate or error message if amount is non numeric
     """
     try:
         amount = float(amount)
     except ValueError:
         return "Invalid input: Must numeric!"
-    url = urllib.urlopen("http://www.exchangerate-api.com/%s/%s/%f?k=%s" % \
-                         (from_c, to_c, amount, API_KEY))
-    return url.read()
+    url = "%s/%s/%s/%f?k=%s" % (API_URL, from_c, to_c, amount, API_KEY)
+    response = urllib.urlopen(url)
+    return response.read()
 
 def get_exchangerate(from_c, to_c):
     """
@@ -99,6 +100,6 @@ def get_exchangerate(from_c, to_c):
     @param to_c: The currency to check against
     @return: The exchangerate
     """
-    url = urllib.urlopen("http://www.exchangerate-api.com/%s/%s/?k=%s" % \
-                         (from_c, to_c, API_KEY))
-    return url.read()
+    url = "%s/%s/%s/?k=%s" % (API_URL, from_c, to_c, API_KEY)
+    response = urllib.urlopen(url)
+    return response.read()

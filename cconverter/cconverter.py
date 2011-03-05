@@ -27,20 +27,20 @@ from gui import cconverter_gtk
 
 def main():
     p = optparse.OptionParser(
-                description=description,
-			    version="%s %s" % (name, version),
-			    usage="Usage: %prog [options] FROM TO AMOUNT")
+        description=description,
+	    version="%s %s" % (name, version),
+        usage="Usage: %prog [options] FROM TO AMOUNT")
     p.add_option("--gtk",
-                action="store_true",
-                dest="gtk",
-                help="Run the gtk gui")
+        action="store_true",
+        dest="gtk",
+        help="Run the Gtk interface")
     p.add_option("-r", "--rate",
-			    action="store_true",
-			    dest="rate",
-			    help="apply this to omitt the amount. Returns the current exhange-rate")
+        action="store_true",
+        dest="rate",
+        help="Apply this to omitt AMOUNT. Returns the current exhange-rate")
     p.add_option("-c", "--currencies",
-                action="store_true",
-                help="Display the list of supported currencies")
+        action="store_true",
+        help="Display the list of supported currencies")
 
     (options, args) = p.parse_args()
 
