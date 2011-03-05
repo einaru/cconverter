@@ -29,10 +29,12 @@ logo = \
 """
 name = "Currency Converter"
 version = "0.2"
+license = 'GPLv3'
+author_name = 'Einar Uvsløkk'
+author_email = '<einar.uvslokk@linux.com>'
 author = ["Einar Uvsløkk <einar.uvslokk@linux.com>"]
 description = \
-"Ebethron Currency Converter is\n" \
-"a simple gtk application for converting a selected amount in one currency "\
+"A simple Gtk application for converting a selected amount in one currency "\
 "to another currency"
 copyright = "© 2010 Ebethronics"
 website = "http://folk.ntnu.no/einaru/linux"
