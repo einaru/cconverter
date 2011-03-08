@@ -22,14 +22,9 @@
 """
 Launch script to be used as /usr/bin/cconverter
 """
-
+import sys
 # Do NOT change this import!
 import cconverter
 
-# Let Phatch know we are running from /usr/bin/phatch
-# This will ensure CONTEXT['distribute'] = 'package'
-from lib import context
-context.BIN = True
-
-import app
-app.main()
+from cconverter import cconverter
+cconverter.main()

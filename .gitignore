@@ -11,3 +11,6 @@
 # Python spesifics
 *.pyc
 
+snippets
+dist
+build

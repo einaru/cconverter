@@ -18,6 +18,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see http://www.gnu.org/licenses/
+import os
 import sys
 import optparse
 
@@ -45,11 +46,9 @@ def main():
     (options, args) = p.parse_args()
 
     if options.gtk:
-        cconverter_gtk.main()
-        sys.exit(1)
+        sys.exit(cconverter_gtk.main(get_data_path()))
     if options.currencies:
-        print_currencies()
-        sys.exit(1)
+        sys.exit(print_currencies())
 
     if len(args) < 2:
         print logo
@@ -62,6 +61,13 @@ def main():
     else:
         if len(args) > 2:
             print convert(args[0], args[1], args[2])
+
+def get_data_path():
+    """
+    In order to get the correct data file location, we must determine if
+    we are running installed, or from devel source.
+    """
+    return os.path.join(sys.prefix, 'share', 'cconverter')
 
 if __name__ == "__main__":
     main()

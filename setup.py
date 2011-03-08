@@ -18,36 +18,13 @@
 import os
 import sys
 import time
-from setuptools import setup
+import glob
 
-from core import app_info
-from lib.context import get_context
+from distutils.core import setup
 
-time_start = time.time()
+from cconverter.core import app_info
 
-CONTEXT = get_context(
-            'cconverter',
-            base_source=None,
-            sys_prefix='',
-            user=False
-        )
-
-if CONTEXT['context'] == ('windows', 'package'):
-    pass
-
-def files(*args):
-    return glob.glob(os.path.join(*args))
-
-def doc(path=''):
-    return os.path.join(CONTEXT['app_doc_path'], path)
-
-def data(path='', *paths):
-    return os.path.join(CONTEXT['app_data_path'], path, *paths)
-
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-classifiers = [
+_classifiers = [
     'Development Status :: 4 - Beta',
     'Environment :: Console',
     'Environment :: X11 Applications',
@@ -59,27 +36,36 @@ classifiers = [
     'Programming Language :: Python',
     'Topic :: Utilities',
 ]
-packages = [
+_packages = [
     'cconverter',
     'cconverter.core',
     'cconverter.lib',
     'cconverter.gui',
 ]
-doc_files = [
-    '']
-
+_data_files = [
+    ('share/icons/hicolor/16x16/apps', glob.glob('data/icons/hicolor/16x16/apps/*png')),
+    ('share/icons/hicolor/22x22/apps', glob.glob('data/icons/hicolor/22x22/apps/*png')),
+    ('share/icons/hicolor/24x24/apps', glob.glob('data/icons/hicolor/24x24/apps/*png')),
+    ('share/icons/hicolor/32x32/apps', glob.glob('data/icons/hicolor/32x32/apps/*png')),
+    ('share/icons/hicolor/48x48/apps', glob.glob('data/icons/hicolor/48x48/apps/*png')),
+    ('share/icons/hicolor/scalable/apps', glob.glob('data/icons/hicolor/scalable/apps/*.svg')),
+    ('share/pixmaps', glob.glob('data/icons/cconverter.png')),
+    ('share/cconverter', glob.glob('data/icons/cconverter.png')),
+    ('share/cconverter', glob.glob('data/cconverter.glade')),
+    ('share/applications', glob.glob('data/cconverter.desktop')),
+    ('share/man/man1', glob.glob('docs/man/cconverter.1')),
+]
 setup(
-    name = 'cconverter',
-    version = app_info.version,
-    author = app_info.author_name,
-    author_email = app_info.author_email,
-    description = app_info.description,
-    license = app_info.license,
-    keywords = 'currency exchange rate',
-    long_description = read('README'),
-    classifiers=[
-        "Development Status :: 3 - Beta",
-        "Topic :: Utilities",
-        "License :: OSI Approved :: GPLv3"
-    ],
+    name='cconverter',
+    version=app_info.version,
+    author=app_info.author_name,
+    author_email=app_info.author_email,
+    url='http://folk.ntnu.no/einaru/linux',
+    description=app_info.description,
+    license=app_info.license,
+    keywords='currency exchange rate',
+    scripts=['bin/cconverter'],
+    packages=_packages,
+    classifiers=_classifiers,
+    data_files=_data_files,
 )
