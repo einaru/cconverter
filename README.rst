@@ -11,12 +11,31 @@ the currency convertions.
 GNOME_ desktop environment, but should run equaly well on platforms with the
 necessary dependencies available.
 
+
+Installation
+============
+
+No installation procedure is available at the moment. A standard autotools
+``./configure ; make ; sudo make install`` is planned though. The only way of
+running the application at the moment, is to run it from source, either by 
+downloading a tarball or cloning the gitrepo, and run::
+
+    git clone https://github.com/ebethron/cconverter
+    cd cconverter
+    ./cconverter.py
+
+
+Screenshots
+===========
+
 .. image:: help/C/figures/cconverter_with_calc.png
+   :align: center
 
 .. _Python: http://python.org
 .. _PyGObject: https://live.gnome.org/PyGObject
 .. _exchangerate-api.com: http://exchangerate-api.com
 .. _GNOME: http://gnome.org
+
 
 License
 =======

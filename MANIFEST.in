@@ -1,7 +1,0 @@
-include AUTHORS
-include README
-include COPYING
-include ChangeLog
-recursive-include cconverter *.glade
-recursive-include data *.desktop *.png *.svg
-recursive-include doc *.1
