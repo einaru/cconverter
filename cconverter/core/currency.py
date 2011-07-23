@@ -1,105 +1,97 @@
-#!/bin/env python
-#-*- coding: utf-8 -*-
-# 
-# currency
-#
-# Copyright (c) 2010, 2011
-#      Einar Uvsløkk, <einaru@stud.ntnu.no>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see http://www.gnu.org/licenses/
+# -*- coding: utf-8 -*-
+"""
+:Date: Fri Jul 22 15:40:30 CEST 2011
+:Authors: Einar Uvsløkk <einar.uvslokk@linux.com>
+:Copyright: (c) 2011 Einar Uvsløkk
+:License: GNU General Public License (GPL) version 3 or later
+
+vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+"""
 import urllib
 
-"""
-The required Api Key:
-"""
-API_KEY="bfzYQ-YE2vb-dckeY"
-API_URL="http://www.exchangerate-api.com"
 
-"""
-The following currency codes are supported by this API:
+API_KEY = 'bfzYQ-YE2vb-dckeY'
+API_URL = 'http://www.exchangerate-api.com'
+
+currencies = {
+    'Australian Dollar': 'AUD',
+    'Brazilian Real': 'BRL',
+    'British Pound Sterling': 'GBP',
+    'Bulgarian Lev': 'BGN',
+    'Canadian Dollar': 'CAD',
+    'Chinese Yuan': 'CNY',
+    'Croatia Kuna': 'HRK',
+    'Czech Koruna': 'CZK',
+    'Danish Krone': 'DKK',
+    'Estonian Kroon': 'EEK',
+    'Euro': 'EUR',
+    'Hong Kong Dollar': 'HKD',
+    'Hungarian Forint': 'HUF',
+    'Indonesian rupiah': 'IDR',
+    'Japanese Yen': 'JPY',
+    'Korean Won': 'KRW',
+    'Latvian Lats': 'LVL',
+    'Lithuanian Litas': 'LTL',
+    'Malasian Ringgit': 'MYR',
+    'Mexican Pesos': 'MXN',
+    'New Romanian Leu': 'RON',
+    'New Turkish Lira': 'TRY',
+    'New Zealand Dollar': 'NZD',
+    'Norwegian Krone': 'NOK',
+    'Philippine Peso': 'PHP',
+    'Polish Zloty': 'PLN',
+    'Russian Rouble': 'RUB',
+    'Singapore Dollar': 'SGD',
+    'South African Rand': 'ZAR',
+    'Swedish Krona': 'SEK',
+    'Swiss Franc': 'CHF',
+    'Thai Baht': 'THB',
+    'US Dollar': 'USD'}
+"""The following currency codes are supported by this API:
 
 http://exchangerate-api.com/supported-currencies
 """
-currencies = {
-    "Australian Dollar" : "AUD",    #  0
-    "Brazilian Real" : "BRL",       #  1
-    "Bulgarian Lev" : "BGN",        #  2
-    "Canadian Dollar" : "CAD",      #  3
-    "Chinese Yuan" : "CNY",         #  4
-    "Croatia Kuna" : "HRK",         #  5
-    "Czech Koruna" : "CZK",         #  6
-    "Danish Krone" : "DKK",         #  7
-    "Estonian Kroon" : "EEK",       #  8
-    "Euro" : "EUR",                 #  9
-    "Hong Kong Dollar" : "HKD",     # 10
-    "Hungarian Forint" : "HUF",     # 11
-    "Indonesian rupiah" : "IDR",    # 12
-    "Japanese Yen" : "JPY",         # 13
-    "Korean Won" : "KRW",           # 14
-    "Latvian Lats" : "LVL",         # 15
-    "Lithuanian Litas" : "LTL",     # 16
-    "Malasian Ringgit" : "MYR",     # 17
-    "Mexican Pesos" : "MXN",        # 18
-    "New Romanian Leu" : "RON",     # 19
-    "New Turkish Lira" : "TRY",     # 20
-    "New Zealand Dollar" : "NZD",   # 21
-    "Norwegian Krone" : "NOK",      # 22
-    "Philippine Peso" : "PHP",      # 23
-    "Polish Zloty" : "PLN",         # 24
-    "Pound Sterling" : "GBP",       # 25
-    "Russian Rouble" : "RUB",       # 26
-    "Singapore Dollar" : "SGD",     # 27
-    "South African Rand" : "ZAR",   # 28
-    "Swedish Krona" : "SEK",        # 29
-    "Swiss Franc" : "CHF",          # 30
-    "Thai Baht" : "THB",            # 31
-    "US Dollar" : "USD",            # 32
-}
+
 
 def print_currencies():
-    """
-    Print all supported currencies with currency identificators
-    """
+    """Print all supported currencies with currency identificators."""
     for k, v, in sorted(currencies.items()):
         print v, k
 
 
-def convert(from_c, to_c, amount):
-    """
-    Convert an amount from currency to currency
-    
-    @param from_c: The currency to convert from
-    @param to_c: The currency to covnert to
-    @param amount: The amount to convert
-    @return: The exchangerate or error message if amount is non numeric
+def convert(amount, from_c, to_c):
+    """Convert an amount from `from_c` to `to_c`.
+
+    Returns the exchangerate or an error message if `amount` is
+    non-numeric.
+
+    :param amount: The amount to convert
+    :type amount: float
+    :param from_c: The currency identificator to convert from
+    :type from_c: string
+    :param to_c: The currency identificator to covnert to
+    :type to_c: string
+    :rtype: string
     """
     try:
         amount = float(amount)
     except ValueError:
-        return "Invalid input: Must numeric!"
-    url = "%s/%s/%s/%f?k=%s" % (API_URL, from_c, to_c, amount, API_KEY)
+        return 'Invalid input: Must be numeric!'
+
+    url = '{}/{}/{}/{}?k={}'.format(API_URL, from_c, to_c, amount, API_KEY)
     response = urllib.urlopen(url)
     return response.read()
 
-def get_exchangerate(from_c, to_c):
+
+def exchangerate(from_c, to_c):
+    """Get the rate between to currencies
+
+    :param from_c: The currency to check
+    :type from_c: string
+    :param to_c: The currency to check against
+    :type to_c: string
+    :rtype: string
     """
-    Get the rate between to currencies
-    
-    @param from_c: The currency to check
-    @param to_c: The currency to check against
-    @return: The exchangerate
-    """
-    url = "%s/%s/%s/?k=%s" % (API_URL, from_c, to_c, API_KEY)
+    url = '{}/{}/{}/?k={}'.format(API_URL, from_c, to_c, API_KEY)
     response = urllib.urlopen(url)
     return response.read()

@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+"""
+:Date: Fri Jul 22 15:32:44 CEST 2011
+:Authors: Einar Uvsløkk <einar.uvslokk@linux.com>
+:Copyright: (c) 2011 Einar Uvsløkk
+:License: GNU General Public License (GPL) version 3 or later
+
+vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+"""
+DATA_DIR = '@DATADIR@'
+PKG_DATA_DIR = '@PKGDATADIR@'
+VERSION = '@VERSION@'
+LOVALE_DIR = '@LOCALEDIR@'

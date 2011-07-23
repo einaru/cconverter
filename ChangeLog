@@ -1,4 +1,11 @@
 This is the changelog for Ebethron Currency Converter
+
+2011-07-23 Einar Uvsløkk <einar.uvslokk@linux.com>
+	Ported the application to Gtk3 making use of the new PyGObject bindings.
+	Improved/modified the ui:
+	- Embedded calculator
+	- Exchangerate information
+
 2011-03-05 Einar Uvsløkk <einar.uvslokk@linux.com>
 	Commited project to github
 	Restructuring the repo
