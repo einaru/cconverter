@@ -1,42 +1,32 @@
 # -*- coding: utf-8 -*-
-#
-# app_info
-#
-# Copyright (c) 2010, 2011
-#      Einar Uvsløkk, <einaru@stud.ntnu.no>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see http://www.gnu.org/licenses/
-logo = \
-"""Ebethronics
-   ____  __  ______  ____  ____  ____  ____  __  __ 
-  / ___\\/ / / / ___\\/ ___\\/ __ \\/ __ \\/ ___\\/ / / / 
- / /___/ /_/ / /   / /   / ____/ / / / /___/\\ \\/ / 
- \\____/\\____/_/___/_/_  _\\____/_/_/_/\\/\\ _/__\\  / ____ 
- / ___\\/ __ \\/ __ \\/ / / / __ \\/ ___\\/ ____/\\__/\\/ ___\\ 
-/ /___/ /_/ / / / /\\ \\/ / ____/ /   / /___/ ____/ / 
-\\____/\____/_/ /_/  \\__/\\____/_/    \\____/\\____/_/ 
 """
-name = "Currency Converter"
-version = "0.2"
+:Date: Fri Jul 22 15:38:52 CEST 2011
+:Authors: Einar Uvsløkk <einar.uvslokk@linux.com>
+:Copyright: (c) 2011 Einar Uvsløkk
+:License: GNU General Public License (GPL) version 3 or later
+
+vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+"""
+name = 'Currency Converter'
+version = '0.3'
 license = 'GPLv3'
-author_name = 'Einar Uvsløkk'
-author_email = '<einar.uvslokk@linux.com>'
-author = ["Einar Uvsløkk <einar.uvslokk@linux.com>"]
-description = \
-"A simple Gtk application for converting a selected amount in one currency "\
-"to another currency"
-copyright = "© 2010 Ebethronics"
-website = "http://folk.ntnu.no/einaru/linux"
-# FIXME: 
-prefix = ""
+authors = ['Einar Uvsløkk <einar.uvslokk@linux.com>']
+description = """A simple Gtk application for converting between currencies."""
+copyright = "© 2010, 2011 Einar Uvsløkk <einar.uvslokk@linux.com>"
+website = 'http://github.com/ebethron/cconverter'
+license = """
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Library General Public License as
+published by the Free Software Foundation; either version 2 of the
+License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Library General Public License for more details.
+
+You should have received a copy of the GNU Library General Public
+License along with the Gnome Library; see the file COPYING.LIB.  If not,
+write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+Boston, MA 02111-1307, USA.
+"""
