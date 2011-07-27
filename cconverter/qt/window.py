@@ -113,7 +113,7 @@ class CConverterQtWindow(QtGui.QMainWindow, Ui_MainWindow):
 
     def showAbout(self):
         """Slot showing the about dialog."""
-        AboutDialog().exec_()
+        pass  # AboutDialog().exec_()
 
     def clearInput(self):
         """Slot for clearing the input line edit."""
