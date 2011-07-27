@@ -11,7 +11,6 @@ vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 """
 import gettext
 import locale
-import logging
 import os
 
 import cconverter
@@ -36,8 +35,6 @@ cconverter.PKG_DATA_DIR = PKG_DATA_DIR
 cconverter.LOCALE_DIR = LOCALE_DIR
 cconverter.APP_NAME = 'cconverter'
 
-logging.basicConfig(format='%(levelname)-8s: %(message)s', level=logging.INFO)
-
 locale.setlocale(locale.LC_ALL, None)
 gettext.bindtextdomain(cconverter.APP_NAME, LOCALE_DIR)
 gettext.textdomain(cconverter.APP_NAME)
@@ -46,5 +43,5 @@ gettext.install(cconverter.APP_NAME)
 dirs = {'DATA_DIR': DATA_DIR,
         'PKG_DATA_DIR': PKG_DATA_DIR,
         'LOCALE_DIR': LOCALE_DIR,}
-kwargs = {'ui': 'gtk', 'config': dirs,}
+kwargs = {'data': dirs,}
 app.run(**kwargs)
