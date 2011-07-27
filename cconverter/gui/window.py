@@ -30,18 +30,18 @@ class CConverterGui:
     _log = logging.getLogger(__name__)
 
     def __init__(self, data):
-        self.builder = Gtk.Builder()
+        builder = Gtk.Builder()
 
         self.data = data
         self.converter = currency.CurrencyConverter()
 
         filename = os.path.join(data['PKG_DATA_DIR'], 'ui', 'main.glade')
-        self.builder.add_from_file(filename)
-        self.builder.connect_signals(self)
+        builder.add_from_file(filename)
+        builder.connect_signals(self)
 
         # Grab and setup widgets we need access to
-        self.window = self.builder.get_object('window')
-        actiongroup = self.builder.get_object('AppActions')
+        self.window = builder.get_object('window')
+        actiongroup = builder.get_object('AppActions')
         self.calc_action = actiongroup.get_action('AppCalc')
         accelgroup = Gtk.AccelGroup()
         self.window.add_accel_group(accelgroup)
@@ -49,18 +49,18 @@ class CConverterGui:
         for action in actiongroup.list_actions():
             action.set_accel_group(accelgroup)
 
-        toolbar = self.builder.get_object('toolbar')
+        toolbar = builder.get_object('toolbar')
         toolbar.get_style_context().add_class(Gtk.STYLE_CLASS_PRIMARY_TOOLBAR)
 
-        self.input_value = self.builder.get_object('input_value')
-        self.input_buffer = self.builder.get_object('input_buffer')
-        self.source_combo = self.builder.get_object('source_combo')
-        self.response_label1 = self.builder.get_object('response_label1')
-        self.response_label2 = self.builder.get_object('response_label2')
-        self.target_combo = self.builder.get_object('target_combo')
-        self.convert_button = self.builder.get_object('convert_button')
-        self.equal_button = self.builder.get_object('button_equal')
-        self.calculator = self.builder.get_object('calculator')
+        self.input_value = builder.get_object('input_value')
+        self.input_buffer = builder.get_object('input_buffer')
+        self.source_combo = builder.get_object('source_combo')
+        self.response_label1 = builder.get_object('response_label1')
+        self.response_label2 = builder.get_object('response_label2')
+        self.target_combo = builder.get_object('target_combo')
+        self.convert_button = builder.get_object('convert_button')
+        self.equal_button = builder.get_object('button_equal')
+        self.calculator = builder.get_object('calculator')
 
         self._init_comboboxes()
 
@@ -69,7 +69,7 @@ class CConverterGui:
         self.response_label1.set_attributes(attr)
         self._log.debug('Fix new style pango attributes')
 
-        table = self.builder.get_object('table')
+        table = builder.get_object('table')
         self.infobar = Gtk.InfoBar()
         self.info = Gtk.Label()
         self.info.set_line_wrap(True)

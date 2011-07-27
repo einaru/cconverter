@@ -52,10 +52,6 @@ def run(data):
 
     (opt, args) = parser.parse_args()
 
-    #logger = logging.getLogger()
-    #logger.setLevel(logging.INFO)
-    #formatter = logging.Formatter('%(levelname)-8s: %(message)s')
-
     if opt.verbose:
         logging.basicConfig(
             level=logging.INFO,
